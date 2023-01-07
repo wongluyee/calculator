@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    height: 50px;
+    width: 50px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color:rgb(210, 210, 210)
+}
+
+.display-box {
+    height:50px;
+    width:300px;
+    border-radius: 5px;
+    border:1px solid black;
+    margin-bottom:30px;
+}
+
+.btn-container {
+    height:300px;
+    width:300px;
+    gap:20px;
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
