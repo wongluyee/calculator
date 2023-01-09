@@ -11,6 +11,7 @@ let result = '';
 let clickedOperator = '';
 
 equalButton.addEventListener('click', () => {
+    if (!currentScreen.textContent) return;
     num2 = currentScreen.textContent;
     appendInputToPreviousScreen(num2 + '=');
     result = operate(clickedOperator, num1, num2);
