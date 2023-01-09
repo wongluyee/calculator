@@ -9,11 +9,6 @@ let num1 = '';
 let num2 = '';
 let result = '';
 let clickedOperator = '';
-let currentOperation = null;
-
-function returnResult(){
-
-}
 
 equalButton.addEventListener('click', () => {
     num2 = currentScreen.textContent;
@@ -26,6 +21,7 @@ equalButton.addEventListener('click', () => {
 function reset(){
   num1 = '';
   num2 = '';
+  result = '';
   clickedOperator = '';
 }
 
@@ -44,7 +40,16 @@ clearButton.addEventListener('click', () =>{
 });
 
 numberButtons.forEach((button) => {
-    button.addEventListener('click', () => appendNumber(button.textContent))
+    button.addEventListener('click', () => {
+      if (currentScreen.textContent) {
+        previousScreen.textContent += currentScreen.textContent;
+        reset();
+        clearCurrentScreen();
+        appendNumber(button.textContent)
+      } else {
+        appendNumber(button.textContent)
+      }
+    })
 })
 
 operatorButtons.forEach((button) => {
