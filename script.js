@@ -7,12 +7,20 @@ const equalButton = document.getElementById('equal-btn');
 
 let num1 = '';
 let num2 = '';
+let result = '';
 let clickedOperator = '';
 let currentOperation = null;
 
+function returnResult(){
+
+}
+
 equalButton.addEventListener('click', () => {
     num2 = currentScreen.textContent;
-    operate(clickedOperator, num1, num2);
+    appendInputToPreviousScreen(num2 + '=');
+    result = operate(clickedOperator, num1, num2);
+    clearCurrentScreen();
+    currentScreen.textContent += result;
 })
 
 function reset(){
@@ -39,10 +47,6 @@ numberButtons.forEach((button) => {
     button.addEventListener('click', () => appendNumber(button.textContent))
 })
 
-function appendNumber(number) {
-    currentScreen.textContent += number;
-}
-
 operatorButtons.forEach((button) => {
     button.addEventListener('click', () => {
         num1 = currentScreen.textContent;
@@ -51,6 +55,10 @@ operatorButtons.forEach((button) => {
         appendInputToPreviousScreen(num1 + button.textContent);
     })
 })
+
+function appendNumber(number) {
+  currentScreen.textContent += number;
+}
 
 function appendInputToPreviousScreen(input){
   previousScreen.textContent += input;
