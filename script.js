@@ -109,7 +109,7 @@ function operate (operator, a, b) {
     } else if (operator === '*') {
         return multiply(a, b);
     } else if (operator === '/') {
-        return (b === 0)? null : divide(a, b);
+        return (b === 0)? undefined : divide(a, b);
     } else {
         return "Error";
     }
