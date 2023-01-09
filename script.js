@@ -54,10 +54,18 @@ numberButtons.forEach((button) => {
 
 operatorButtons.forEach((button) => {
     button.addEventListener('click', () => {
+        if (previousScreen.textContent.includes("=")) {
+          clearPreviousScreen();
+          num1 = currentScreen.textContent;
+          clickedOperator = button.textContent;
+          clearCurrentScreen();
+          appendInputToPreviousScreen(num1 + button.textContent);
+        } else {
         num1 = currentScreen.textContent;
         clickedOperator = button.textContent;
         clearCurrentScreen();
         appendInputToPreviousScreen(num1 + button.textContent);
+        }
     })
 })
 
