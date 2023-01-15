@@ -4,6 +4,7 @@ const numberButtons = document.querySelectorAll('.number-btn');
 const operatorButtons = document.querySelectorAll(".operator-btn");
 const clearButton = document.getElementById('clear-btn');
 const equalButton = document.getElementById('equal-btn');
+const dotButton = document.getElementById('dot-btn')
 
 let num1 = '';
 let num2 = '';
@@ -11,106 +12,106 @@ let result = '';
 let clickedOperator = '';
 
 equalButton.addEventListener('click', () => {
-    if (!currentScreen.textContent) return;
-    num2 = currentScreen.textContent;
-    appendInputToPreviousScreen(num2 + '=');
-    result = operate(clickedOperator, num1, num2);
-    clearCurrentScreen();
-    currentScreen.textContent += result;
+  if (!currentScreen.textContent) return;
+  num2 = currentScreen.textContent;
+  appendInputToPreviousScreen(num2 + '=');
+  result = operate(clickedOperator, num1, num2);
+  clearCurrentScreen();
+  currentScreen.textContent += result;
 })
 
-function reset(){
+function reset() {
   num1 = '';
   num2 = '';
   result = '';
   clickedOperator = '';
 }
 
-function clearCurrentScreen(){
+function clearCurrentScreen() {
   currentScreen.textContent = '';
 }
 
-function clearPreviousScreen(){
+function clearPreviousScreen() {
   previousScreen.textContent = '';
 }
 
-clearButton.addEventListener('click', () =>{
+clearButton.addEventListener('click', () => {
   clearCurrentScreen();
   clearPreviousScreen();
   reset();
 });
 
 numberButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      if (currentScreen.textContent) {
-        previousScreen.textContent += currentScreen.textContent;
-        reset();
-        clearCurrentScreen();
-        appendNumber(button.textContent)
-      } else {
-        appendNumber(button.textContent)
-      }
-    })
+  button.addEventListener('click', () => {
+    if (currentScreen.textContent) {
+      previousScreen.textContent += currentScreen.textContent;
+      reset();
+      clearCurrentScreen();
+      appendNumber(button.textContent)
+    } else {
+      appendNumber(button.textContent)
+    }
+  })
 })
 
 operatorButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-        if (previousScreen.textContent.includes("=")) {
-          clearPreviousScreen();
-          num1 = currentScreen.textContent;
-          clickedOperator = button.textContent;
-          clearCurrentScreen();
-          appendInputToPreviousScreen(num1 + button.textContent);
-        } else {
-        num1 = currentScreen.textContent;
-        clickedOperator = button.textContent;
-        clearCurrentScreen();
-        appendInputToPreviousScreen(num1 + button.textContent);
-        }
-    })
+  button.addEventListener('click', () => {
+    if (previousScreen.textContent.includes("=")) {
+      clearPreviousScreen();
+      num1 = currentScreen.textContent;
+      clickedOperator = button.textContent;
+      clearCurrentScreen();
+      appendInputToPreviousScreen(num1 + button.textContent);
+    } else {
+      num1 = currentScreen.textContent;
+      clickedOperator = button.textContent;
+      clearCurrentScreen();
+      appendInputToPreviousScreen(num1 + button.textContent);
+    }
+  })
 })
 
 function appendNumber(number) {
   currentScreen.textContent += number;
 }
 
-function appendInputToPreviousScreen(input){
+function appendInputToPreviousScreen(input) {
   previousScreen.textContent += input;
 }
 
-function appendOperator(operator){
-    currentScreen.textContent += operator;
+function appendOperator(operator) {
+  currentScreen.textContent += operator;
 }
 
-function add (a, b) {
-	return a + b;
+function add(a, b) {
+  return a + b;
 };
 
-function subtract (a, b) {
-	return a - b;
+function subtract(a, b) {
+  return a - b;
 };
 
-function multiply (a, b) {
-	return a * b;
+function multiply(a, b) {
+  return a * b;
 };
 
-function divide (a, b) {
-    return a / b;
+function divide(a, b) {
+  return a / b;
 }
 
-function operate (operator, a, b) {
-    a = Number(a);
-    b = Number(b);
+function operate(operator, a, b) {
+  a = Number(a);
+  b = Number(b);
 
-    if (operator === '+'){
-        return add(a, b);
-    } else if (operator === '-') {
-        return subtract(a, b);
-    } else if (operator === '*') {
-        return multiply(a, b);
-    } else if (operator === '/') {
-        return (b === 0)? undefined : divide(a, b);
-    } else {
-        return "Error";
-    }
+  if (operator === '+') {
+    return add(a, b);
+  } else if (operator === '-') {
+    return subtract(a, b);
+  } else if (operator === '*') {
+    return multiply(a, b);
+  } else if (operator === '/') {
+    return (b === 0) ? undefined : divide(a, b);
+  } else {
+    return "Error";
+  }
 }

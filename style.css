@@ -47,3 +47,7 @@ button:hover {
     justify-content: space-between;
     flex-wrap: wrap;
 }
+
+#clear-btn {
+  width: 300px;
+}
