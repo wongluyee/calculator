@@ -5,6 +5,7 @@ const operatorButtons = document.querySelectorAll(".operator-btn");
 const clearButton = document.getElementById('clear-btn');
 const equalButton = document.getElementById('equal-btn');
 const dotButton = document.getElementById('dot-btn');
+const deleteButton = document.getElementById('delete-btn');
 
 let num1 = '';
 let num2 = '';

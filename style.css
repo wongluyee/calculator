@@ -1,53 +1,58 @@
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 button {
   font-size:15px;
-    height: 50px;
-    width: 50px;
-    border-radius: 5px;
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px rgb(195, 195, 195);
 }
 
 button:hover {
-    background-color:rgb(210, 210, 210)
+  background-color:rgb(210, 210, 210)
 }
 
 #display-box {
-    display:flex;
-    flex-direction: column;
-    height:50px;
-    width:300px;
-    border-radius: 5px;
-    border:1px solid black;
-    margin-bottom:30px;
-    padding: 10px;
+  display:flex;
+  flex-direction: column;
+  height:50px;
+  width:300px;
+  border-radius: 5px;
+  border:1px solid black;
+  margin-bottom:30px;
+  padding: 10px;
 }
 
 #previous-screen {
-    height: 20px;
-    text-align: right;
-    font-size: 15px;
+  height: 20px;
+  text-align: right;
+  font-size: 15px;
 }
 
 #current-screen {
-    height: 30px;
-    text-align: right;
-    font-size:25px;
+  height: 30px;
+  text-align: right;
+  font-size:25px;
 }
 
 .btn-container {
-    height:300px;
-    width:300px;
-    gap:20px;
-    display:flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  height:300px;
+  width:300px;
+  gap:20px;
+  display:flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 #clear-btn {
-  width: 300px;
+  width: 140px;
+}
+
+#delete-btn {
+  width: 140px;
 }
