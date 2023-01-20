@@ -12,6 +12,10 @@ let num2 = '';
 let result = '';
 let clickedOperator = '';
 
+deleteButton.addEventListener('click', () => {
+  currentScreen.textContent = currentScreen.textContent.toString().slice(0, -1)
+})
+
 equalButton.addEventListener('click', () => {
   if (!currentScreen.textContent) return;
   num2 = currentScreen.textContent;
@@ -21,21 +25,6 @@ equalButton.addEventListener('click', () => {
   currentScreen.textContent += result;
 })
 
-function reset() {
-  num1 = '';
-  num2 = '';
-  result = '';
-  clickedOperator = '';
-}
-
-function clearCurrentScreen() {
-  currentScreen.textContent = '';
-}
-
-function clearPreviousScreen() {
-  previousScreen.textContent = '';
-}
-
 clearButton.addEventListener('click', () => {
   clearCurrentScreen();
   clearPreviousScreen();
@@ -44,9 +33,9 @@ clearButton.addEventListener('click', () => {
 
 dotButton.addEventListener('click', () => {
   if (currentScreen.textContent.includes('.'))
-    return
+  return
   else
-    currentScreen.textContent += '.'
+  currentScreen.textContent += '.'
 });
 
 numberButtons.forEach((button) => {
@@ -56,9 +45,9 @@ numberButtons.forEach((button) => {
       clearCurrentScreen();
       clearPreviousScreen();
       reset();
-      appendNumber(button.textContent)
+      appendToCurrentScreen(button.textContent)
     } else {
-      appendNumber(button.textContent)
+      appendToCurrentScreen(button.textContent)
     }
   })
 })
@@ -80,16 +69,27 @@ operatorButtons.forEach((button) => {
   })
 })
 
-function appendNumber(number) {
-  currentScreen.textContent += number;
+function reset() {
+  num1 = '';
+  num2 = '';
+  result = '';
+  clickedOperator = '';
+}
+
+function clearCurrentScreen() {
+  currentScreen.textContent = '';
+}
+
+function clearPreviousScreen() {
+  previousScreen.textContent = '';
+}
+
+function appendToCurrentScreen(input) {
+  currentScreen.textContent += input;
 }
 
 function appendInputToPreviousScreen(input) {
   previousScreen.textContent += input;
-}
-
-function appendOperator(operator) {
-  currentScreen.textContent += operator;
 }
 
 function add(a, b) {
