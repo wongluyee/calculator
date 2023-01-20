@@ -50,7 +50,7 @@ dotButton.addEventListener('click', () => {
 
 numberButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    if (previousScreen.textContent.includes("=")) {
+    if (previousScreen.textContent.includes("=") && !currentScreen.textContent.includes(".")) {
       // previousScreen.textContent += currentScreen.textContent;
       clearCurrentScreen();
       clearPreviousScreen();
