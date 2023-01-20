@@ -4,7 +4,7 @@ const numberButtons = document.querySelectorAll('.number-btn');
 const operatorButtons = document.querySelectorAll(".operator-btn");
 const clearButton = document.getElementById('clear-btn');
 const equalButton = document.getElementById('equal-btn');
-const dotButton = document.getElementById('dot-btn')
+const dotButton = document.getElementById('dot-btn');
 
 let num1 = '';
 let num2 = '';
@@ -41,12 +41,20 @@ clearButton.addEventListener('click', () => {
   reset();
 });
 
+dotButton.addEventListener('click', () => {
+  if (currentScreen.textContent.includes('.'))
+    return
+  else
+    currentScreen.textContent += '.'
+});
+
 numberButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    if (currentScreen.textContent) {
-      previousScreen.textContent += currentScreen.textContent;
-      reset();
+    if (previousScreen.textContent.includes("=")) {
+      // previousScreen.textContent += currentScreen.textContent;
       clearCurrentScreen();
+      clearPreviousScreen();
+      reset();
       appendNumber(button.textContent)
     } else {
       appendNumber(button.textContent)
